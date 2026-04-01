@@ -38,7 +38,8 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
-      className="glass-card overflow-hidden group cursor-pointer"
+    className="glass-card overflow-hidden group cursor-pointer"
+    onClick={() => liveUrl && window.open(liveUrl, "_blank", "noopener,noreferrer")}
     >
       <div className="h-48 overflow-hidden relative">
         <div
