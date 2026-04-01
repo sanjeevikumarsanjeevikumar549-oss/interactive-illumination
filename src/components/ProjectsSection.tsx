@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
 const projects = [
@@ -37,16 +36,14 @@ const projects = [
 ];
 
 const ProjectsSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px", amount: 0.1 });
-
   return (
-    <section id="projects" className="section-padding relative" ref={ref}>
+    <section id="projects" className="section-padding relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
           <p className="text-primary font-mono text-sm mb-2 tracking-widest">03. PROJECTS</p>
