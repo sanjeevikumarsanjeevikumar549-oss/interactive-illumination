@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { Download, FileText, Briefcase, GraduationCap } from "lucide-react";
 
 const experience = [
-  { role: "Senior Frontend Developer", company: "Tech Corp", period: "2022 – Present", desc: "Led UI architecture for SaaS platform serving 100K+ users." },
-  { role: "Full Stack Developer", company: "StartupXYZ", period: "2020 – 2022", desc: "Built real-time dashboards and payment integrations." },
-  { role: "Junior Developer", company: "Agency Co.", period: "2018 – 2020", desc: "Developed responsive websites and e-commerce solutions." },
+  { role: "Junior Full Stack Developer", company: "Tech Solutions", period: "2023 – Present", desc: "Building responsive web apps with React, Node.js, and PostgreSQL." },
+  { role: "Frontend Developer Intern", company: "StartupHub", period: "2022 – 2023", desc: "Developed UI components and integrated REST APIs for client projects." },
+  { role: "Freelance Web Developer", company: "Self-employed", period: "2021 – 2022", desc: "Created websites and landing pages for small businesses." },
 ];
 
 const education = [
