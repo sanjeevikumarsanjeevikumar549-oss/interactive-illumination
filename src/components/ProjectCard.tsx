@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 
 interface ProjectCardProps {
@@ -14,6 +14,7 @@ interface ProjectCardProps {
 const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, index }: ProjectCardProps) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const hasLiveLink = Boolean(liveUrl && liveUrl !== "#");
 
   const rotateX = useSpring(useTransform(y, [-100, 100], [8, -8]), { stiffness: 300, damping: 30 });
   const rotateY = useSpring(useTransform(x, [-100, 100], [-8, 8]), { stiffness: 300, damping: 30 });
@@ -29,6 +30,13 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
     y.set(0);
   };
 
+  const handleIconClick = (event: React.MouseEvent<HTMLAnchorElement>, href?: string) => {
+    event.stopPropagation();
+    if (!href || href === "#") {
+      event.preventDefault();
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -38,24 +46,24 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
-    className="glass-card overflow-hidden group cursor-pointer"
-    onClick={() => liveUrl && window.open(liveUrl, "_blank", "noopener,noreferrer")}
+      className={`glass-card group overflow-hidden ${hasLiveLink ? "cursor-pointer" : "cursor-default"}`}
+      onClick={() => hasLiveLink && window.open(liveUrl, "_blank", "noopener,noreferrer")}
     >
-      <div className="h-48 overflow-hidden relative">
+      <div className="relative h-44 overflow-hidden sm:h-48">
         <div
-          className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+          className="h-full w-full bg-cover bg-center transition-transform duration-500 md:group-hover:scale-110"
           style={{ backgroundImage: `url(${image})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
       </div>
 
-      <div className="p-6">
-        <h3 className="font-display font-bold text-lg text-foreground mb-2">{title}</h3>
-        <p className="text-muted-foreground text-sm leading-relaxed mb-4">{description}</p>
+      <div className="p-5 sm:p-6">
+        <h3 className="mb-2 font-display text-lg font-bold text-foreground">{title}</h3>
+        <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="mb-4 flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <span key={tag} className="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+            <span key={tag} className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
               {tag}
             </span>
           ))}
@@ -63,12 +71,24 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
 
         <div className="flex gap-3">
           {githubUrl && (
-            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(event) => handleIconClick(event, githubUrl)}
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
               <Github size={18} />
             </a>
           )}
           {liveUrl && (
-            <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(event) => handleIconClick(event, liveUrl)}
+              className="text-muted-foreground transition-colors hover:text-primary"
+            >
               <ExternalLink size={18} />
             </a>
           )}

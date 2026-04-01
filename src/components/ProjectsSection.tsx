@@ -44,15 +44,15 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12 sm:mb-16"
         >
-          <p className="text-primary font-mono text-sm mb-2 tracking-widest">03. PROJECTS</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground">
+          <p className="mb-2 text-sm font-mono tracking-widest text-primary">03. PROJECTS</p>
+          <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl md:text-5xl">
             Featured <span className="text-gradient">Work</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
           {projects.map((p, i) => (
             <ProjectCard key={p.title} {...p} index={i} />
           ))}
