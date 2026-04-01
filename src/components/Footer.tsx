@@ -18,7 +18,7 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex justify-center gap-6 mb-8"
+          className="mb-8 flex flex-wrap justify-center gap-4 sm:gap-6"
         >
           {socials.map((s, i) => (
             <motion.a
@@ -31,7 +31,7 @@ const Footer = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
               whileHover={{ scale: 1.2, rotate: 5 }}
-              className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
               aria-label={s.label}
             >
               <s.icon size={18} />
@@ -44,7 +44,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="text-muted-foreground text-sm"
+          className="text-xs text-muted-foreground sm:text-sm"
         >
           Designed & Built with ♥ — © {new Date().getFullYear()}
         </motion.p>
