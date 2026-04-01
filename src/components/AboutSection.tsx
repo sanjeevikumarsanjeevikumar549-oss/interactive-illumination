@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
 import { Code2, Palette, Zap, Globe } from "lucide-react";
 
 const highlights = [
@@ -11,16 +9,14 @@ const highlights = [
 ];
 
 const AboutSection = () => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" , amount: 0.1 });
-
   return (
-    <section id="about" className="section-padding relative" ref={ref}>
+    <section id="about" className="section-padding relative">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6 }}
           className="mb-16"
         >
           <p className="text-primary font-mono text-sm mb-2 tracking-widest">01. ABOUT</p>
@@ -31,9 +27,10 @@ const AboutSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             <p className="text-muted-foreground leading-relaxed mb-6">
               I'm a passionate developer with a love for creating immersive web experiences.
@@ -52,8 +49,9 @@ const AboutSection = () => {
               <motion.div
                 key={h.label}
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
                 className="glass-card p-5 group hover:glow-border transition-all duration-300"
               >
                 <h.icon className="w-8 h-8 text-primary mb-3 group-hover:scale-110 transition-transform" />
