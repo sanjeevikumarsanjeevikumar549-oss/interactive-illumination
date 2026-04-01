@@ -41,7 +41,7 @@ const SkillBar = ({ name, level, delay, inView }: { name: string; level: number;
 
 const SkillsSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-50px", amount: 0.1 });
 
   return (
     <section id="skills" className="section-padding relative" ref={ref}>

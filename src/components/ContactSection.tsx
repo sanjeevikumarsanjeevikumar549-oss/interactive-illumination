@@ -4,7 +4,7 @@ import { Send, CheckCircle, Mail, MapPin } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-50px", amount: 0.1 });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
