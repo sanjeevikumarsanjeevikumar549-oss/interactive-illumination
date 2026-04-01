@@ -12,7 +12,7 @@ const highlights = [
 
 const AboutSection = () => {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const inView = useInView(ref, { once: true, margin: "-50px" , amount: 0.1 });
 
   return (
     <section id="about" className="section-padding relative" ref={ref}>
