@@ -6,7 +6,6 @@ const skills = [
   { name: "Three.js / WebGL", level: 80 },
   { name: "Node.js", level: 85 },
   { name: "CSS / Tailwind", level: 92 },
-  { name: "Python", level: 75 },
   { name: "Framer Motion", level: 88 },
   { name: "Database / SQL", level: 78 },
 ];
@@ -31,7 +30,7 @@ const SkillBar = ({ name, level, delay }: { name: string; level: number; delay: 
         transition={{ delay: delay + 0.2, duration: 0.8, ease: "easeOut" }}
         className="h-full rounded-full"
         style={{
-          background: `linear-gradient(90deg, hsl(168, 75%, 42%), hsl(192, 100%, 50%))`,
+          background: `linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)))`,
         }}
       />
     </div>

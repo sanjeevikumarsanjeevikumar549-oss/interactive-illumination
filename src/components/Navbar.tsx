@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useId } from "react";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { label: "About", href: "#about" },
@@ -13,6 +13,7 @@ const links = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const menuId = useId();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -21,11 +22,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ delay: 0.5, duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav
+      className={`fixed top-0 left-0 right-0 z-[1000] pt-[env(safe-area-inset-top)] transition-colors duration-300 ${
         scrolled || open ? "bg-background/80 backdrop-blur-xl border-b border-border/50" : ""
       }`}
     >
@@ -34,7 +32,8 @@ const Navbar = () => {
           Sanjeevi
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
+          <ThemeToggle />
           {links.map((l) => (
             <a
               key={l.href}
@@ -52,46 +51,50 @@ const Navbar = () => {
           </a>
         </div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="-mr-2 p-2 text-foreground md:hidden"
-          aria-label={open ? "Close navigation" : "Open navigation"}
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="relative z-[1] flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="-mr-2 touch-manipulation p-2 text-foreground"
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls={menuId}
+          >
+            {open ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="border-b border-border bg-background/95 backdrop-blur-xl md:hidden"
-          >
-            <div className="flex flex-col gap-2 px-4 pb-5 pt-2 sm:px-6">
-              {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg bg-secondary/30 px-3 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                >
-                  {l.label}
-                </a>
-              ))}
+      {open ? (
+        <div
+          id={menuId}
+          role="navigation"
+          aria-label="Mobile"
+          className="border-b border-border bg-background/98 backdrop-blur-xl md:hidden"
+        >
+          <div className="flex max-h-[min(70dvh,calc(100dvh-4rem))] flex-col gap-2 overflow-y-auto overscroll-contain px-4 pb-5 pt-2 sm:px-6">
+            {links.map((l) => (
               <a
-                href="#contact"
+                key={l.href}
+                href={l.href}
                 onClick={() => setOpen(false)}
-                className="btn-glow mt-2 flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+                className="flex min-h-[44px] items-center rounded-lg bg-secondary/30 px-3 py-3 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
               >
-                Let's Talk
+                {l.label}
               </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="btn-glow mt-2 flex min-h-[44px] items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+            >
+              Let's Talk
+            </a>
+          </div>
+        </div>
+      ) : null}
+    </nav>
   );
 };
 

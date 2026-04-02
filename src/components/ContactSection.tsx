@@ -80,25 +80,28 @@ const ContactSection = () => {
                     type="text"
                     placeholder="Name"
                     required
-                    className="rounded-lg border border-border bg-secondary px-4 py-3 text-sm text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    autoComplete="name"
+                    className="min-h-[44px] rounded-lg border border-border bg-secondary px-4 py-3 text-base text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 sm:min-h-0 sm:text-sm"
                   />
                   <input
                     type="email"
                     placeholder="Email"
                     required
-                    className="rounded-lg border border-border bg-secondary px-4 py-3 text-sm text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    autoComplete="email"
+                    className="min-h-[44px] rounded-lg border border-border bg-secondary px-4 py-3 text-base text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 sm:min-h-0 sm:text-sm"
                   />
                 </div>
                 <input
                   type="text"
                   placeholder="Subject"
-                  className="w-full rounded-lg border border-border bg-secondary px-4 py-3 text-sm text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  autoComplete="off"
+                  className="min-h-[44px] w-full rounded-lg border border-border bg-secondary px-4 py-3 text-base text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 sm:min-h-0 sm:text-sm"
                 />
                 <textarea
                   placeholder="Your message..."
                   rows={5}
                   required
-                  className="w-full resize-none rounded-lg border border-border bg-secondary px-4 py-3 text-sm text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-full resize-none rounded-lg border border-border bg-secondary px-4 py-3 text-base text-foreground transition-all placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 sm:text-sm"
                 />
                 <button
                   type="submit"

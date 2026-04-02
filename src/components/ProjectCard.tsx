@@ -1,5 +1,18 @@
+import { useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+
+const useFinePointer = () => {
+  const [fine, setFine] = useState(true);
+  useEffect(() => {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setFine(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  return fine;
+};
 
 interface ProjectCardProps {
   title: string;
@@ -12,6 +25,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, index }: ProjectCardProps) => {
+  const finePointer = useFinePointer();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const hasLiveLink = Boolean(liveUrl && liveUrl !== "#");
@@ -31,11 +45,20 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
   };
 
   const handleIconClick = (event: React.MouseEvent<HTMLAnchorElement>, href?: string) => {
-    event.stopPropagation();
     if (!href || href === "#") {
       event.preventDefault();
     }
   };
+
+  const imageBlock = (
+    <div className="relative h-44 overflow-hidden sm:h-48">
+      <div
+        className="h-full w-full bg-cover bg-center transition-transform duration-500 md:group-hover:scale-110"
+        style={{ backgroundImage: `url(${image})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
+    </div>
+  );
 
   return (
     <motion.div
@@ -43,22 +66,41 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      onMouseMove={handleMouse}
-      onMouseLeave={handleLeave}
-      className={`glass-card group overflow-hidden ${hasLiveLink ? "cursor-pointer" : "cursor-default"}`}
-      onClick={() => hasLiveLink && window.open(liveUrl, "_blank", "noopener,noreferrer")}
+      style={
+        finePointer
+          ? { rotateX, rotateY, transformStyle: "preserve-3d" as const }
+          : undefined
+      }
+      onMouseMove={finePointer ? handleMouse : undefined}
+      onMouseLeave={finePointer ? handleLeave : undefined}
+      className={`glass-card group touch-manipulation overflow-hidden ${hasLiveLink ? "cursor-pointer" : "cursor-default"}`}
     >
-      <div className="relative h-44 overflow-hidden sm:h-48">
-        <div
-          className="h-full w-full bg-cover bg-center transition-transform duration-500 md:group-hover:scale-110"
-          style={{ backgroundImage: `url(${image})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
-      </div>
+      {hasLiveLink ? (
+        <a
+          href={liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          {imageBlock}
+        </a>
+      ) : (
+        imageBlock
+      )}
 
       <div className="p-5 sm:p-6">
-        <h3 className="mb-2 font-display text-lg font-bold text-foreground">{title}</h3>
+        {hasLiveLink ? (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-2 block font-display text-lg font-bold text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm"
+          >
+            {title}
+          </a>
+        ) : (
+          <h3 className="mb-2 font-display text-lg font-bold text-foreground">{title}</h3>
+        )}
         <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{description}</p>
 
         <div className="mb-4 flex flex-wrap gap-2">
@@ -76,7 +118,7 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
               target="_blank"
               rel="noopener noreferrer"
               onClick={(event) => handleIconClick(event, githubUrl)}
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-muted-foreground transition-colors hover:text-primary"
             >
               <Github size={18} />
             </a>
@@ -87,7 +129,7 @@ const ProjectCard = ({ title, description, tags, image, liveUrl, githubUrl, inde
               target="_blank"
               rel="noopener noreferrer"
               onClick={(event) => handleIconClick(event, liveUrl)}
-              className="text-muted-foreground transition-colors hover:text-primary"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-muted-foreground transition-colors hover:text-primary"
             >
               <ExternalLink size={18} />
             </a>

@@ -6,6 +6,55 @@
 
 @layer base {
   :root {
+    --background: 210 40% 98%;
+    --foreground: 225 30% 12%;
+
+    --card: 210 35% 97%;
+    --card-foreground: 225 30% 12%;
+
+    --popover: 210 35% 97%;
+    --popover-foreground: 225 30% 12%;
+
+    --primary: 168 62% 36%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 28% 92%;
+    --secondary-foreground: 225 28% 18%;
+
+    --muted: 210 22% 94%;
+    --muted-foreground: 215 16% 38%;
+
+    --accent: 192 85% 40%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 22% 88%;
+    --input: 210 22% 88%;
+    --ring: 168 62% 36%;
+
+    --radius: 0.75rem;
+
+    --glow-primary: 168 62% 36%;
+    --glow-accent: 192 85% 40%;
+    --surface-glass: 210 35% 97%;
+
+    --sidebar-background: 210 38% 96%;
+    --sidebar-foreground: 225 30% 12%;
+    --sidebar-primary: 168 62% 36%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 28% 92%;
+    --sidebar-accent-foreground: 225 28% 18%;
+    --sidebar-border: 210 22% 88%;
+    --sidebar-ring: 168 62% 36%;
+
+    --hero-gradient-mid-1: 210 45% 95%;
+    --hero-gradient-mid-2: 200 38% 93%;
+    --hero-gradient-mid-3: 195 35% 92%;
+  }
+
+  .dark {
     --background: 225 30% 6%;
     --foreground: 210 40% 94%;
 
@@ -34,8 +83,6 @@
     --input: 225 15% 18%;
     --ring: 168 75% 42%;
 
-    --radius: 0.75rem;
-
     --glow-primary: 168 75% 42%;
     --glow-accent: 192 100% 50%;
     --surface-glass: 225 25% 10%;
@@ -48,6 +95,10 @@
     --sidebar-accent-foreground: 210 40% 94%;
     --sidebar-border: 225 15% 18%;
     --sidebar-ring: 168 75% 42%;
+
+    --hero-gradient-mid-1: 225 30% 8%;
+    --hero-gradient-mid-2: 240 25% 10%;
+    --hero-gradient-mid-3: 225 30% 8%;
   }
 }
 
@@ -60,10 +111,19 @@
     @apply bg-background text-foreground font-sans overflow-x-hidden;
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 
   section {
-    scroll-margin-top: 5.5rem;
+    scroll-margin-top: 4.25rem;
+  }
+
+  @media (min-width: 768px) {
+    section {
+      scroll-margin-top: 5.5rem;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -105,9 +165,9 @@
     background: linear-gradient(
       135deg,
       hsl(var(--background)) 0%,
-      hsl(225 30% 8%) 25%,
-      hsl(240 25% 10%) 50%,
-      hsl(225 30% 8%) 75%,
+      hsl(var(--hero-gradient-mid-1)) 25%,
+      hsl(var(--hero-gradient-mid-2)) 50%,
+      hsl(var(--hero-gradient-mid-3)) 75%,
       hsl(var(--background)) 100%
     );
     background-size: 400% 400%;
@@ -126,6 +186,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-padding-top: calc(4.25rem + env(safe-area-inset-top, 0px));
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+  }
+}
+
+#root {
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

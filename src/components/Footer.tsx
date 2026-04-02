@@ -1,18 +1,23 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Twitter, Youtube, Instagram } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 const socials = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  {
+    icon: Github,
+    href: "https://github.com/sanjeevikumarsanjeevikumar549-oss",
+    label: "GitHub",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/sanjeevikumars",
+    label: "LinkedIn",
+  },
 ];
 
 const Footer = () => {
   return (
     <footer className="section-padding border-t border-border/50">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="mx-auto max-w-6xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

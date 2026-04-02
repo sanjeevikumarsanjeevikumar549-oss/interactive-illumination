@@ -30,7 +30,7 @@ const ResumeSection = () => {
           </div>
           <a
             href="/resume.pdf"
-            download
+            download="My-Resume.pdf"
             className="btn-glow flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3 font-display text-sm font-semibold tracking-wide text-primary-foreground transition-transform hover:scale-105 sm:w-fit"
           >
             <Download size={16} />

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 interface Particle {
   x: number;
@@ -10,10 +11,12 @@ interface Particle {
 }
 
 const ParticleField = () => {
+  const { resolvedTheme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef<Particle[]>([]);
   const animRef = useRef<number>(0);
+  const primaryHslRef = useRef("168, 75%, 42%");
 
   const initParticles = useCallback((width: number, height: number) => {
     const count = Math.min(80, Math.floor((width * height) / 15000));
@@ -28,15 +31,32 @@ const ParticleField = () => {
   }, []);
 
   useEffect(() => {
+    const raw = getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();
+    if (raw) {
+      const parts = raw.split(/\s+/).slice(0, 3);
+      primaryHslRef.current = `${parts[0]}, ${parts[1]}, ${parts[2]}`;
+    }
+  }, [resolvedTheme]);
+
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    let lastW = 0;
+    let lastH = 0;
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      if (particlesRef.current.length === 0) {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
+      const sizeChanged =
+        lastW > 0 && (Math.abs(w - lastW) > 40 || Math.abs(h - lastH) > 40);
+      lastW = w;
+      lastH = h;
+      if (particlesRef.current.length === 0 || sizeChanged) {
         initParticles(canvas.width, canvas.height);
       }
     };
@@ -68,7 +88,7 @@ const ParticleField = () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(168, 75%, 42%, ${p.opacity})`;
+        ctx.fillStyle = `hsla(${primaryHslRef.current}, ${p.opacity})`;
         ctx.fill();
       }
 
@@ -82,7 +102,7 @@ const ParticleField = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `hsla(168, 75%, 42%, ${0.15 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `hsla(${primaryHslRef.current}, ${0.15 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

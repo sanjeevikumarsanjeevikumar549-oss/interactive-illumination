@@ -9,7 +9,7 @@ const HeroSection = () => {
       <ParticleField />
       <FloatingGeometry />
 
-      <div className="section-padding relative z-20 w-full max-w-4xl">
+      <div className="section-padding relative z-20 w-full min-w-0 max-w-4xl pointer-events-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="mb-4 font-display text-4xl font-bold sm:text-5xl md:text-7xl lg:text-8xl"
+          className="mb-4 break-words font-display text-4xl font-bold sm:text-5xl md:text-7xl lg:text-8xl"
         >
           <span className="text-gradient">MERN Stack</span>
           <br />
@@ -65,7 +65,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-5 left-1/2 z-20 -translate-x-1/2 sm:bottom-8"
+        className="absolute left-1/2 z-20 -translate-x-1/2 bottom-[max(1.25rem,env(safe-area-inset-bottom))] sm:bottom-8"
       >
         <a href="#about" className="text-muted-foreground transition-colors hover:text-primary">
           <ChevronDown className="h-6 w-6 animate-bounce" />
