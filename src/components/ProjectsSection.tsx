@@ -3,35 +3,25 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "3D Portfolio Experience",
-    description: "An immersive portfolio built with Three.js featuring interactive 3D elements and cinematic transitions.",
-    tags: ["React", "Three.js", "GSAP"],
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&h=400&fit=crop",
-    githubUrl: "#",
-    liveUrl: "#",
+    title: "BMI Calculator",
+    description: "A clean BMI calculator app that lets users quickly calculate their Body Mass Index with a simple, intuitive interface.",
+    tags: ["HTML", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&h=400&fit=crop",
+    liveUrl: "https://bmi-calculator-ten-lemon.vercel.app/",
   },
   {
-    title: "AI Dashboard",
-    description: "Real-time analytics dashboard with AI-powered insights, data visualization and predictive models.",
-    tags: ["Next.js", "Python", "D3.js"],
+    title: "Student Form",
+    description: "A student registration form application with form validation and data management capabilities.",
+    tags: ["React", "CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop",
+    liveUrl: "https://demo-virid-phi.vercel.app/",
+  },
+  {
+    title: "Responsive Dashboard",
+    description: "A fully responsive admin dashboard built with clean layouts, navigation, and interactive UI components.",
+    tags: ["HTML", "CSS", "JavaScript"],
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with payment integration, inventory management and admin panel.",
-    tags: ["React", "Node.js", "Stripe"],
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    githubUrl: "#",
-  },
-  {
-    title: "Real-time Chat App",
-    description: "WebSocket-based chat application with end-to-end encryption, media sharing, and group channels.",
-    tags: ["React", "Socket.io", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=600&h=400&fit=crop",
-    githubUrl: "#",
-    liveUrl: "#",
+    liveUrl: "https://js-1-sigma.vercel.app/",
   },
 ];
 

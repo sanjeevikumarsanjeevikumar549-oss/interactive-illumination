@@ -46,11 +46,11 @@ const ContactSection = () => {
             <div className="space-y-4">
               <div className="flex items-start gap-3 text-muted-foreground">
                 <Mail size={18} className="mt-0.5 shrink-0 text-primary" />
-                <span className="break-all text-sm">hello@portfolio.dev</span>
+                <span className="break-all text-sm">sanjeevikumarsanjeevikumar549@gmail.com</span>
               </div>
               <div className="flex items-start gap-3 text-muted-foreground">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-primary" />
-                <span className="text-sm">San Francisco, CA</span>
+                <span className="text-sm">Kanniyakumari, Tamil Nadu, India</span>
               </div>
             </div>
           </motion.div>

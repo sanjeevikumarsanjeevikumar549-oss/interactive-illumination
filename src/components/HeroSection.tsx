@@ -16,7 +16,7 @@ const HeroSection = () => {
           transition={{ delay: 0.2, duration: 0.6 }}
           className="mb-4 text-sm font-mono tracking-widest text-primary md:text-base"
         >
-          Hello, I'm
+          Hello, I'm Sanjeevikumar
         </motion.p>
 
         <motion.h1
@@ -25,7 +25,7 @@ const HeroSection = () => {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mb-4 font-display text-4xl font-bold sm:text-5xl md:text-7xl lg:text-8xl"
         >
-          <span className="text-gradient">Creative</span>
+          <span className="text-gradient">MERN Stack</span>
           <br />
           <span className="text-foreground">Developer</span>
         </motion.h1>
@@ -36,8 +36,8 @@ const HeroSection = () => {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mb-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl"
         >
-          I build immersive digital experiences with modern web technologies,
-          combining aesthetics with performance.
+          I build web applications using HTML, CSS, Tailwind CSS, JavaScript, and React.js,
+          focused on creating clean, responsive, and user-friendly experiences.
         </motion.p>
 
         <motion.div
