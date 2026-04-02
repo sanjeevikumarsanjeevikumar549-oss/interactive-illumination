@@ -34,14 +34,13 @@ const AboutSection = () => {
             className="space-y-6"
           >
             <p className="leading-relaxed text-muted-foreground">
-              I'm a passionate developer with a love for creating immersive web experiences.
-              With expertise in modern frontend technologies and a keen eye for design,
-              I bridge the gap between aesthetics and functionality.
+              I'm Sanjeevikumar, a passionate MERN stack developer from Kanniyakumari, Tamil Nadu.
+              I specialize in building responsive, modern web applications using HTML, CSS,
+              Tailwind CSS, JavaScript, and React.js.
             </p>
             <p className="leading-relaxed text-muted-foreground">
-              My journey in tech has been driven by curiosity and a desire to push boundaries.
-              I specialize in React ecosystems, 3D web experiences, and performance-driven
-              applications that leave lasting impressions.
+              I love turning ideas into clean, functional interfaces that deliver great user
+              experiences. I'm always eager to learn new technologies and improve my craft.
             </p>
           </motion.div>
 
