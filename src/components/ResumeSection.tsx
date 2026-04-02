@@ -8,7 +8,7 @@ const experience = [
 ];
 
 const education = [
-  { degree: "B.S. Computer Science", school: "State University", period: "2014 – 2018" },
+  { degree: "B.Tech – Information Technology", school: "CSI Institute of Technology, Anna University", period: "" },
 ];
 
 const ResumeSection = () => {
