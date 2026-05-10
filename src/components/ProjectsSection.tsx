@@ -3,6 +3,20 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
+    title: "A2Z Portfolio",
+    description: "A modern personal portfolio website showcasing projects, skills, and contact info with smooth animations and responsive design.",
+    tags: ["React", "Tailwind CSS", "Firebase"],
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
+    liveUrl: "https://a2z-portfolio.web.app/",
+  },
+  {
+    title: "Jarvis – Acoustic Topology",
+    description: "An interactive web app exploring acoustic topology with a Jarvis-inspired UI and immersive visual effects.",
+    tags: ["React", "Tailwind CSS", "JavaScript"],
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
+    liveUrl: "https://jarvis-acoustic-topology.vercel.app/",
+  },
+  {
     title: "BMI Calculator",
     description: "A clean BMI calculator app that lets users quickly calculate their Body Mass Index with a simple, intuitive interface.",
     tags: ["HTML", "CSS", "JavaScript"],
