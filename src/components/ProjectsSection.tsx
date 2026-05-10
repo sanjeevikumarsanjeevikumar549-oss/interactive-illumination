@@ -3,10 +3,10 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "A2Z Portfolio",
-    description: "A modern personal portfolio website showcasing projects, skills, and contact info with smooth animations and responsive design.",
+    title: "A2Z E-Commerce",
+    description: "A modern e-commerce website with product listings, cart, and a clean, responsive shopping experience.",
     tags: ["React", "Tailwind CSS", "Firebase"],
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     liveUrl: "https://a2z-portfolio.web.app/",
   },
   {
