@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, Triangle } from "lucide-react";
 
 const socials = [
   {
@@ -11,6 +11,11 @@ const socials = [
     icon: Linkedin,
     href: "https://www.linkedin.com/in/sanjeevikumars",
     label: "LinkedIn",
+  },
+  {
+    icon: Triangle,
+    href: "https://vercel.com/sanjeevikumarsanjeevikumar549-oss-projects",
+    label: "Vercel",
   },
 ];
 
